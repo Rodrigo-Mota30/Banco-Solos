@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Solos - Inteligência Financeira</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Arquivo CSS Externo OBRIGATÓRIO -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-solos-dark text-white font-['Inter'] antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navbar -->
+    <header class="w-full max-w-7xl mx-auto px-4 py-6 sticky top-0 z-50">
+        <div class="bg-[#161616]/70 backdrop-blur-md rounded-full px-6 py-4 flex justify-between items-center border border-white/5 shadow-lg">
+            <!-- Logo -->
+            <div onclick="showScreen('home')" class="flex items-center gap-2 cursor-pointer">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#5D7A32] to-[#A3C66C] flex items-center justify-center font-bold text-xs text-black">BS</div>
+                <span class="font-bold tracking-wider text-sm sm:text-base">BANCO SOLOS</span>
+            </div>
+            
+            <!-- Links de Navegação Principal -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+                <button onclick="showScreen('home')" id="nav-home" class="text-white border-b-2 border-[#5D7A32] pb-1 transition">Home</button>
+                <button onclick="showScreen('extrato')" id="nav-extrato" class="hover:text-white transition">Extrato</button>
+                <button onclick="showScreen('cartoes')" id="nav-cartoes" class="hover:text-white transition">Cartões</button>
+            </nav>
+
+            <!-- Botão de Acesso Rápido -->
+            <div class="flex items-center gap-4">
+                <button onclick="showScreen('acesso')" class="bg-solos-green text-black text-xs sm:text-sm font-semibold px-5 py-2 rounded-full hover:bg-[#8cb358] transition">Acessar Conta</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="w-full max-w-7xl mx-auto px-4 py-8 flex-grow">
+
+        <!-- ========================================================= -->
+        <!-- SCREEN 0: HOME PAGE                                       -->
+        <!-- ========================================================= -->
+        <div id="screen-home" class="space-y-20 animate-fade">
+            <!-- Hero Section -->
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-6">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-[#181818] border border-white/10 px-4 py-1.5 rounded-full text-xs text-[#A3C66C]">
+                        <span>🌱</span> Finanças sustentáveis para o seu futuro
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-none">
+                        O banco que cultiva a sua <span class="text-solos-green">evolução</span>.
+                    </h1>
+                    <p class="text-gray-400 text-base sm:text-lg max-w-lg">
+                        Gerencie seus gastos, acompanhe transações em tempo real e invista em um ecossistema financeiro feito para render e preservar.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="showScreen('acesso')" class="bg-solos-green text-black font-semibold px-6 py-3 rounded-xl hover:bg-[#8cb358] transition text-sm">Abrir Conta Gratuita</button>
+                        <button onclick="showScreen('extrato')" class="bg-[#121212] border border-white/10 hover:border-white/20 font-medium px-6 py-3 rounded-xl transition text-sm">Conhecer Painel</button>
+                    </div>
+                </div>
+
+                <!-- Elemento Gráfico de Impacto da Home -->
+                <div class="relative flex justify-center items-center h-80 sm:h-96 bg-[#121212] rounded-3xl border border-white/5 overflow-hidden">
+                    <div class="absolute w-72 h-72 bg-[#5D7A32]/10 rounded-full filter blur-3xl animate-pulse"></div>
+                    <div class="z-10 text-center space-y-4">
+                        <div class="text-6xl">📊</div>
+                        <p class="text-xl font-bold tracking-wide">Controle Orgânico Total</p>
+                        <p class="text-xs text-gray-500 max-w-xs mx-auto">Visualize suas despesas e investimentos através de interfaces limpas e minimalistas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recursos Destaques -->
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div onclick="showScreen('extrato')" class="bg-[#121212] p-6 rounded-2xl border border-white/5 hover:border-[#5D7A32]/40 transition cursor-pointer group">
+                    <div class="text-2xl mb-4">📈</div>
+                    <h3 class="text-lg font-semibold mb-2 group-hover:text-solos-green transition">Extrato Inteligente</h3>
+                    <p class="text-sm text-gray-400">Acompanhe fluxos de entrada e saída com relatórios analíticos dinâmicos.</p>
+                </div>
+                <div onclick="showScreen('cartoes')" class="bg-[#121212] p-6 rounded-2xl border border-white/5 hover:border-[#5D7A32]/40 transition cursor-pointer group">
+                    <div class="text-2xl mb-4">💳</div>
+                    <h3 class="text-lg font-semibold mb-2 group-hover:text-solos-green transition">Gestão de Cartões</h3>
+                    <p class="text-sm text-gray-400">Bloqueie cartões, gerencie limites e ative compras por aproximação em um clique.</p>
+                </div>
+                <div onclick="showScreen('acesso')" class="bg-[#121212] p-6 rounded-2xl border border-white/5 hover:border-[#5D7A32]/40 transition cursor-pointer group">
+                    <div class="text-2xl mb-4">🛡️</div>
+                    <h3 class="text-lg font-semibold mb-2 group-hover:text-solos-green transition">Segurança Avançada</h3>
+                    <p class="text-sm text-gray-400">Ambiente criptografado para garantir a proteção total do seu patrimônio.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- SCREEN 1: EXTRATO (COM AS CONTAS A PAGAR REINTRODUZIDAS)  -->
+        <!-- ========================================================= -->
+        <div id="screen-extrato" class="hidden space-y-12 animate-fade">
+            <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Card do Gráfico Orgânico Principal -->
+                <div class="lg:col-span-2 bg-[#121212] rounded-3xl p-6 sm:p-8 border border-white/5 flex flex-col sm:flex-row items-center justify-around gap-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-[#5D7A32]/10 rounded-full filter blur-3xl"></div>
+                    <div>
+                        <h2 class="text-xl font-semibold mb-6 border-b-2 border-[#5D7A32] w-fit pb-1">Despesas</h2>
+                        <div class="relative w-48 h-48 flex items-center justify-center bg-solos-blob rounded-full shadow-2xl">
+                            <div class="absolute inset-4 bg-[#121212] rounded-full flex flex-col items-center justify-center">
+                                <span class="text-lg font-bold">R$6558.75</span>
+                                <span class="text-xs text-solos-green font-medium">+16%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mini Cards de Entrando/Saindo -->
+                    <div class="flex flex-col gap-4 w-full sm:w-64">
+                        <div class="bg-[#181818] p-4 rounded-2xl border border-white/5">
+                            <p class="text-xs text-gray-400 mb-1">Entrando</p>
+                            <p class="text-lg font-semibold text-blue-400">+ R$4245.65</p>
+                        </div>
+                        <div class="bg-[#181818] p-4 rounded-2xl border border-white/5">
+                            <p class="text-xs text-gray-400 mb-1">Saindo</p>
+                            <p class="text-lg font-semibold text-emerald-400">- R$1435.20</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Filtros Rápidos -->
+                <div class="bg-[#121212] rounded-3xl p-6 border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-400 mb-4">Filtrar Período</h3>
+                        <select class="w-full bg-[#181818] text-white rounded-xl p-3 border border-white/10 outline-none">
+                            <option>Mês Atual</option>
+                            <option>Últimos 30 dias</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tabela de Contas e Faturas a Pagar do Usuário -->
+            <section class="bg-[#121212] rounded-3xl p-6 sm:p-8 border border-white/5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                    <h2 class="text-xl font-semibold border-b-2 border-[#5D7A32] w-fit pb-1">Contas e Faturas a Pagar</h2>
+                    <div class="flex gap-2 text-xs">
+                        <span class="bg-red-500/10 text-red-400 px-3 py-1 rounded-full border border-red-500/20">Aguardando Pagamento</span>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-[600px] text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-white/5 text-gray-400 text-xs tracking-wider uppercase">
+                                <th class="pb-4 font-medium">Descrição</th>
+                                <th class="pb-4 font-medium">Vencimento</th>
+                                <th class="pb-4 font-medium">Horário Limite</th>
+                                <th class="pb-4 font-medium text-right">Valor</th>
+                                <th class="pb-4 font-medium text-center">Status / Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm divide-y divide-white/5">
+                            <tr>
+                                <td class="py-4 flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 font-bold text-xs">💡</div>
+                                    <span class="font-medium">Conta de Luz</span>
+                                </td>
+                                <td class="py-4 text-gray-300">21 julho</td>
+                                <td class="py-4 text-gray-400">09:00</td>
+                                <td class="py-4 text-right font-semibold text-red-400">-R$234.87</td>
+                                <td class="py-4 text-center">
+                                    <button class="bg-[#181818] border border-red-500/30 hover:border-red-500 text-red-400 text-xs px-4 py-1.5 rounded-lg transition">Pagar Fatura</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500 font-bold text-xs">💻</div>
+                                    <span class="font-medium">Conta de Internet</span>
+                                </td>
+                                <td class="py-4 text-gray-300">28 julho</td>
+                                <td class="py-4 text-gray-400">07:00</td>
+                                <td class="py-4 text-right font-semibold text-red-400">-R$124.45</td>
+                                <td class="py-4 text-center">
+                                    <button class="bg-[#181818] border border-red-500/30 hover:border-red-500 text-red-400 text-xs px-4 py-1.5 rounded-lg transition">Pagar Fatura</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-500 font-bold text-xs">🍕</div>
+                                    <span class="font-medium">Dominos</span>
+                                </td>
+                                <td class="py-4 text-gray-300">29 julho</td>
+                                <td class="py-4 text-gray-400">02:00</td>
+                                <td class="py-4 text-right font-semibold text-red-400">-R$90.67</td>
+                                <td class="py-4 text-center">
+                                    <button class="bg-[#181818] border border-emerald-500/30 text-emerald-400 text-xs px-4 py-1.5 rounded-lg cursor-default">Agendado</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 font-bold text-xs">🛍️</div>
+                                    <span class="font-medium">C&A</span>
+                                </td>
+                                <td class="py-4 text-gray-300">31 julho</td>
+                                <td class="py-4 text-gray-400">04:00</td>
+                                <td class="py-4 text-right font-semibold text-red-400">-R$190.88</td>
+                                <td class="py-4 text-center">
+                                    <button class="bg-[#181818] border border-red-500/30 hover:border-red-500 text-red-400 text-xs px-4 py-1.5 rounded-lg transition">Pagar Fatura</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- SCREEN 2: CARTÕES (COM INVESTIMENTOS REINTRODUZIDOS)       -->
+        <!-- ========================================================= -->
+        <div id="screen-cartoes" class="hidden space-y-10 animate-fade">
+            <section class="bg-[#121212] rounded-3xl p-6 sm:p-8 border border-white/5">
+                <h2 class="text-xl font-semibold mb-6 border-b-2 border-[#5D7A32] w-fit pb-1">Configurações do seu Cartão</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-[#181818] p-4 rounded-xl border border-white/5 flex items-center justify-between">
+                        <span class="text-sm font-medium text-gray-300">📟 Pagamento Sem Contato</span>
+                        <div class="w-4 h-4 rounded-full bg-[#5D7A32]"></div>
+                    </div>
+                    <div class="bg-[#181818] p-4 rounded-xl border border-white/5 flex items-center justify-between">
+                        <span class="text-sm font-medium text-gray-300">🔒 Pagamento Online</span>
+                        <div class="w-4 h-4 rounded-full bg-[#5D7A32]"></div>
+                    </div>
+                    <div class="bg-[#181818] p-4 rounded-xl border border-white/5 flex items-center justify-between">
+                        <span class="text-sm font-medium text-gray-300">🏧 Saques em Caixa Eletrônico</span>
+                        <div class="w-4 h-4 rounded-full bg-gray-600"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grid de Cartões Fiel ao Layout Laptop -->
+            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-[#7fa148] to-[#5D7A32] rounded-2xl p-6 h-48 flex flex-col justify-between border border-white/10 shadow-lg">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs opacity-60 uppercase font-medium">Nome do Titular</p>
+                            <p class="font-semibold text-sm tracking-wide">Maria Silva</p>
+                        </div>
+                        <span class="text-lg font-bold italic tracking-wide text-white">VISA</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <p class="font-mono text-base tracking-widest">•••• •••• •••• 9018</p>
+                        <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-[10px]">🟢</div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-[#5D7A32] via-[#2a3b14] to-[#121212] rounded-2xl p-6 h-48 flex flex-col justify-between border border-white/10 shadow-lg">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs opacity-60 uppercase font-medium">Nome do Titular</p>
+                            <p class="font-semibold text-sm tracking-wide">Maria Silva</p>
+                        </div>
+                        <span class="text-lg font-bold italic tracking-wide text-white">VISA</span>
+                    </div>
+                    <p class="font-mono text-base tracking-widest">•••• •••• •••• 9018</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-[#1c2411] to-[#2e3d19] rounded-2xl p-6 h-48 flex flex-col justify-between border border-white/10 shadow-lg">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs opacity-60 uppercase font-medium">Nome do Titular</p>
+                            <p class="font-semibold text-sm tracking-wide">Maria Silva</p>
+                        </div>
+                        <span class="text-lg font-bold italic tracking-wide text-white">VISA</span>
+                    </div>
+                    <div>
+                        <p class="text-[10px] opacity-50 uppercase">Limite Utilizado</p>
+                        <p class="font-bold text-sm">R$ 3.469,52</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção de Investimentos / Histórico Recente do Cartão -->
+            <section class="bg-[#121212] rounded-3xl p-6 sm:p-8 border border-white/5">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-semibold border-b-2 border-[#5D7A32] w-fit pb-1">Investimentos</h2>
+                    <div class="flex bg-[#181818] rounded-xl p-1 text-xs font-medium border border-white/5">
+                        <button class="bg-[#5D7A32] text-black px-4 py-1.5 rounded-lg font-semibold">Transactions</button>
+                        <button class="text-gray-400 px-4 py-1.5 rounded-lg hover:text-white">Scheduled</button>
+                    </div>
+                </div>
+
+                <!-- Lista de Compras Recentes Extraídas do PDF de Cartões -->
+                <div class="space-y-4">
+                    <!-- Compra 1: Amazon -->
+                    <div class="bg-[#181818] p-4 rounded-xl border border-white/5 flex items-center justify-between hover:bg-[#1d1d1d] transition">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-bold text-amber-500 text-lg">a</div>
+                            <div>
+                                <p class="text-sm font-semibold">Amazon</p>
+                                <p class="text-xs text-gray-500">Recente</p>
+                            </div>
+                        </div>
+                        <p class="text-sm font-bold text-gray-300">R$ 15,26</p>
+                    </div>
+
+                    <!-- Compra 2: Ruby -->
+                    <div class="bg-[#181818] p-4 rounded-xl border border-white/5 flex items-center justify-between hover:bg-[#1d1d1d] transition">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center font-bold text-purple-400 text-lg">R</div>
+                            <div>
+                                <p class="text-sm font-semibold">Ruby</p>
+                                <p class="text-xs text-gray-500">Recente</p>
+                            </div>
+                        </div>
+                        <p class="text-sm font-bold text-emerald-400">+ R$ 250,00</p>
+                    </div>
+
+                    <!-- Compra 3: Uber -->
+                    <div class="bg-[#181818] p-4 rounded-xl border border-white/5 flex items-center justify-between hover:bg-[#1d1d1d] transition">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-black border border-white/10 flex items-center justify-center text-[10px] font-bold">UBER</div>
+                            <div>
+                                <p class="text-sm font-semibold">Uber</p>
+                                <p class="text-xs text-gray-500">Ontem</p>
+                            </div>
+                        </div>
+                        <p class="text-sm font-bold text-red-400">- R$ 7,87</p>
+                    </div>
+
+                    <!-- Compra 4: Cafe Nero -->
+                    <div class="bg-[#181818] p-4 rounded-xl border border-white/5 flex items-center justify-between hover:bg-[#1d1d1d] transition">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-blue-900/20 flex items-center justify-center text-[10px] font-bold text-blue-300">NERO</div>
+                            <div>
+                                <p class="text-sm font-semibold">Cafe Nero</p>
+                                <p class="text-xs text-gray-500">Sábado</p>
+                            </div>
+                        </div>
+                        <p class="text-sm font-bold text-gray-300">R$ 19,50</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- SCREEN 3: ACESSO (LOGIN / CADASTRO)                       -->
+        <!-- ========================================================= -->
+        <div id="screen-acesso" class="hidden max-w-md mx-auto py-6 animate-fade">
+            <div id="block-login" class="bg-[#121212] rounded-3xl p-8 border border-white/5 space-y-6">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold">Login</h2>
+                    <p class="text-xs text-gray-400 mt-1">Bem-vindo(a) de volta! Faça login para acessar sua conta.</p>
+                </div>
+                <form class="space-y-4" onsubmit="return false;">
+                    <input type="email" placeholder="Digite seu e-mail" class="w-full bg-[#181818] text-white rounded-xl p-3.5 border border-white/10 text-sm outline-none">
+                    <input type="password" placeholder="Digite sua senha" class="w-full bg-[#181818] text-white rounded-xl p-3.5 border border-white/10 text-sm outline-none">
+                    <button class="w-full bg-solos-green text-black font-bold p-3.5 rounded-xl text-sm">Login</button>
+                </form>
+                <p class="text-center text-xs text-gray-400">
+                    Não tem uma conta? <button onclick="toggleForm('cadastro')" class="text-solos-green hover:underline font-medium">Cadastre-se aqui</button>
+                </p>
+            </div>
+
+            <div id="block-cadastro" class="hidden bg-[#121212] rounded-3xl p-8 border border-white/5 space-y-6">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold">Cadastre-se</h2>
+                    <p class="text-xs text-gray-400 mt-1">Crie sua conta no Banco Solos hoje mesmo.</p>
+                </div>
+                <form class="space-y-4" onsubmit="return false;">
+                    <input type="text" placeholder="Nome Completo" class="w-full bg-[#181818] text-white rounded-xl p-3.5 border border-white/10 text-sm outline-none">
+                    <input type="email" placeholder="Digite seu e-mail" class="w-full bg-[#181818] text-white rounded-xl p-3.5 border border-white/10 text-sm outline-none">
+                    <input type="password" placeholder="Criar Senha" class="w-full bg-[#181818] text-white rounded-xl p-3.5 border border-white/10 text-sm outline-none">
+                    <button class="w-full bg-solos-green text-black font-bold p-3.5 rounded-xl text-sm">Criar Conta</button>
+                </form>
+                <p class="text-center text-xs text-gray-400">
+                    Já possui conta? <button onclick="toggleForm('login')" class="text-solos-green hover:underline font-medium">Fazer Login</button>
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Padrão Integrado (Clicável) -->
+    <footer class="w-full bg-[#0a0a0a] border-t border-white/5 pt-12 pb-6 mt-12 text-xs sm:text-sm text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
+            <div class="flex flex-col items-center gap-1 text-center">
+                <span class="font-bold tracking-wider text-white">BANCO SOLOS</span>
+                <span class="text-[10px] text-gray-500 uppercase tracking-widest">Cuidando do Futuro</span>
+            </div>
+
+            <!-- Links de Navegação Completos no Rodapé -->
+            <div class="flex flex-wrap justify-center gap-6 my-2 text-gray-300 font-medium">
+                <button onclick="showScreen('home')" class="hover:text-solos-green transition">Home</button>
+                <button onclick="showScreen('extrato')" class="hover:text-solos-green transition">Extrato</button>
+                <button onclick="showScreen('cartoes')" class="hover:text-solos-green transition">Cartões</button>
+                <button onclick="showScreen('acesso')" class="hover:text-solos-green transition">Login / Cadastro</button>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-gray-500 text-center">
+                <span>✉ bancosolos@gmail.com</span>
+                <span>📞 +21 91813 23 2309</span>
+                <span>📍 Em algum lugar do mundo</span>
+            </div>
+
+            <div class="w-full border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-gray-600">
+                <p>Banco Solos. Todos os direitos reservados.</p>
+                <p class="font-mono text-gray-500">Aluno: Rodrigo Mota (RM571999)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lógica de Visualização de Telas -->
+    <script>
+        function showScreen(screenId) {
+            document.getElementById('screen-home').classList.add('hidden');
+            document.getElementById('screen-extrato').classList.add('hidden');
+            document.getElementById('screen-cartoes').classList.add('hidden');
+            document.getElementById('screen-acesso').classList.add('hidden');
+            
+            document.getElementById('nav-home').className = "hover:text-white transition";
+            document.getElementById('nav-extrato').className = "hover:text-white transition";
+            document.getElementById('nav-cartoes').className = "hover:text-white transition";
+
+            document.getElementById('screen-' + screenId).classList.remove('hidden');
+
+            const activeNav = document.getElementById('nav-' + screenId);
+            if (activeNav) {
+                activeNav.className = "text-white border-b-2 border-[#5D7A32] pb-1 transition";
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleForm(formType) {
+            if (formType === 'login') {
+                document.getElementById('block-login').classList.remove('hidden');
+                document.getElementById('block-cadastro').classList.add('hidden');
+            } else {
+                document.getElementById('block-cadastro').classList.remove('hidden');
+                document.getElementById('block-login').classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
